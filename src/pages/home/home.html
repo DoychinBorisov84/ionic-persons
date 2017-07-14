@@ -1,14 +1,28 @@
 <ion-header>
   <ion-navbar>
+    <ion-buttons end>
+      <button ion-button (click)="addUser()">
+        <ion-icon name="add-circle" class="button-add" ></ion-icon>
+      </button>
+    </ion-buttons>
+
     <ion-title>
-      Ionic Blank
+      Employees List
     </ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+<!-- View for List/Reorder option/Button Without arrow/Looping through our Providers(EmployeeProvidersPage)/On click trigger a func(currentEmployeeClicked) in home.ts -->
+  <ion-list no-lines>
+    <ion-item-group reorder="true" (ionItemReorder)="$event.applyTo(employees.employees_array)">
+      <button ion-item detail-none *ngFor="let single_employee of employees.employees_array" (click)="showDetails(single_employee)" class="button-details" >
+        <ion-avatar item-start><img src="../../assets/boy.png" alt="avatar-image"> </ion-avatar>
+        <h2>{{ single_employee.name }}</h2>
+        <h4>{{ single_employee.title }}</h4>
+      </button>
+    </ion-item-group>
+  </ion-list>
+
+
 </ion-content>

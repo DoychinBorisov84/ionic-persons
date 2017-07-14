@@ -1,0 +1,31 @@
+.ios, .md{
+  page-add-user {
+    ion-title
+    {
+      background-color: #899e94;
+      text-align: center;
+    }
+    .toolbar-background-md
+    {
+      background-color: #899e94;
+    }
+    ion-content
+    {
+      background-color: #10cc8d;
+    }
+    ion-input
+    {
+      background-color: #10bb8d;
+      margin-bottom: 3px;
+    }
+    input::placeholder
+    {
+      color: white;
+    }
+
+
+
+
+
+  }
+}

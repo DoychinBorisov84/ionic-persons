@@ -4,27 +4,50 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 
+import { CloudSettings, CloudModule } from '@ionic/cloud-angular';
+
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
+import { EmployeeDetailsPage } from '../pages/employee-details/employee-details';
+import { HttpModule } from '@angular/http';
+import { EmployeesProvider } from '../providers/employees/employees';
+import { Geolocation } from '@ionic-native/geolocation';
+import { IonicStorageModule } from '@ionic/storage';
+import { AddUserPage } from '../pages/add-user/add-user';
+
+
+const cloudSettings: CloudSettings = {
+  'core': {
+    'app_id': '018c8cca'
+  }
+};
 
 @NgModule({
   declarations: [
     MyApp,
-    HomePage
+    HomePage,
+    EmployeeDetailsPage,
+    AddUserPage
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp)
+    HttpModule,
+    IonicModule.forRoot(MyApp),
+     CloudModule.forRoot(cloudSettings),
+      IonicStorageModule.forRoot()
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    HomePage
+    HomePage,
+    EmployeeDetailsPage,
+    AddUserPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    EmployeesProvider, Geolocation
   ]
 })
 export class AppModule {}

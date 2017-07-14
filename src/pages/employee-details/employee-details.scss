@@ -1,0 +1,81 @@
+.ios, .md {
+  page-employee-details
+  {
+    ion-title
+    {
+      background-color: #6e9dc9;
+      text-align: center;
+    }
+    .toolbar-background-md
+    {
+      background-color: #6e9dc9;
+    }
+    .toolbar-title-md
+    {
+      position: relative;
+      left: 20px;
+    }
+    ion-content
+    {
+      background-image: url(../../assets/v-card.png);
+    }
+    ion-item
+    {
+      font-weight: bold;
+      font-family: Comic Sans;
+      text-align: center;
+      color: blue;
+      background-image: url(../../assets/v-card.png);
+      background-color: #7e7e7e;
+      width: 96%;
+      margin: 10px 2%;
+      padding: 2px;
+      -webkit-box-shadow: -11px 8px 17px 0px rgba(0,0,0,0.75);
+      -moz-box-shadow: -11px 8px 17px 0px rgba(0,0,0,0.75);
+        box-shadow: -11px 8px 17px 0px rgba(0,0,0,0.75);
+    }
+    ion-item h1
+    {
+    font-size: 25px;
+    }
+    .page-dismiss
+    {
+      color: blue;
+    }
+    .marker-button
+    {
+      width: 120px;
+      height: 30px;
+      border-radius: 32px;
+      -webkit-border-radius: 32;
+      -moz-border-radius: 32;
+      // position: relative;
+      // left: 80px;
+      display: block;
+      margin: 0 auto;
+      margin-bottom: 2px;
+
+    }
+    .scroll
+     {
+      height: 100%
+     }
+      #map
+      {
+        width: 100%;
+        height: 300px;
+       }
+
+
+
+
+
+
+
+
+
+
+
+
+  }
+}
