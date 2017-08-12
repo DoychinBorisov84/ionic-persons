@@ -11,6 +11,7 @@ import { Storage } from '@ionic/storage';
 })
 export class AddUserPage {
 
+  // Declaring Variables to take  the users input fields using [(ngModel)]
   name;
   title;
   age;
@@ -26,36 +27,20 @@ export class AddUserPage {
   // Saving the user using [two-way-binding]....
   saveUser()
   {
-    // Taking the users input
-    let name = this.name;
-    let title = this.title;
-    let age = this.age;
-    let location = this.location;
-
-    // Using Storage to save it locally
-    this.storage.set('name', name);
-    this.storage.set('title', title);
-    this.storage.set('age', age);
-    this.storage.set('location', location);
-  }
-  showUser() {
-    // Retrieve local Storage
-    let name =  this.storage.get('name').then((val) => {
-    console.log(val);});
-    let title =  this.storage.get('title').then((val) => {
-    console.log(val);});
-    let age =  this.storage.get('age').then((val) => {
-    console.log(val);});
-    let location =  this.storage.get('location').then((val) => {
-    console.log(val);});
-
+    // Taking the users input as an object-newUser using the  [(two-way-binding)]. Creating object->newUser->for passing as param
+    let newUser = {
+      name: this.name,
+      title: this.title,
+      age: this.age,
+      location: this.location
+     }
+    //  Passing our object with data-input as param on dismiss
+    this.viewCtrl.dismiss(newUser);
   }
 
-  // Closing the modal with the View Controller
+  // Closing the modal with the View Controller on click "Dismiss"-btn
   closeModal() {
     this.viewCtrl.dismiss();
   }
-
-
 
 }

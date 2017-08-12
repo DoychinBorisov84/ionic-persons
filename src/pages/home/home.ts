@@ -2,8 +2,10 @@ import { Component } from '@angular/core';
 import { NavController, NavParams, ModalController, ViewController } from 'ionic-angular';
 import { reorderArray } from 'ionic-angular';
 import { EmployeeDetailsPage } from '../employee-details/employee-details';
-import { EmployeesProvider } from '../../providers/employees/employees';
 import { AddUserPage } from '../add-user/add-user';
+import { Storage } from '@ionic/storage';
+import { UserDetailPage } from '../user-detail/user-detail';
+import { EmployeesProvider } from '../../providers/employees/employees';
 
 @Component({
   selector: 'page-home',
@@ -11,34 +13,48 @@ import { AddUserPage } from '../add-user/add-user';
 })
 export class HomePage {
 
-  public items = [];
+  //  puyblic array to store locally our users
+  public newUsers = [];
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public modalCtrl: ModalController, public employees: EmployeesProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public modalCtrl: ModalController, public employees: EmployeesProvider, public storage: Storage) {
 
+//Setting up our Provider EmployeesProvider we will use for permanent storage of our employees. It should be in the constructor for initial load
+    this.employees.getData().then((data) => {
+
+      if(data){
+        this.newUsers = JSON.parse(data);
+      }
+    });
+    //
 
   }
   ionViewDidLoad(){
   }
-  // Get current employeeeClicked creating an object with the data for it. Next create modal.popUp(PageForModalView, {parameterObject} passed to the modal. Next present the modal)
-    showDetails(single_employee)
-    {
-      // array of information of the SELECTED employee
-      let employee = {name: single_employee.name, title: single_employee.title, age: single_employee.age, location: single_employee.location};
 
-      // let data = {name: 'Djiombo', title: 'Sir'};
-      // this.navCtrl.push(EmployeeDetailsPage, data);
+    // Adding user using modal to page AddUserPage. Using modals is better option IF we need data back on dismiss()
+  addUser() {
+      // Creating the modal with our page
+    let modal = this.modalCtrl.create(AddUserPage);
+      // passing data on dismissing the modal(newUser) in AddUserPage
+    modal.onDidDismiss((newUser) => {
+      // If the data is passed use saveUser(with data)
+        if(newUser){
+          this.saveUser(newUser);
+        }
+    });
+    // Present the page/modal view
+    modal.present();
+  }
 
-      // passing data-object with the creating modal-popup into our EmployyesDetailsPage
-     let modal = this.modalCtrl.create(EmployeeDetailsPage, {employee});
-        // modal.onDidDismiss((data)=>{console.log(data);} );
-     modal.present();
-    }
+    // Method with (parameter) to .push(parameter) into our object
+  saveUser(newUser){
+    this.newUsers.push(newUser);
+    this.employees.saveData(this.newUsers);
+  }
 
-    // Adding user using modal to page AddUserPage
-    addUser() {
-      let modal = this.modalCtrl.create(AddUserPage);
-      modal.present();
-    }
-
+    // Showing details for the clicked user. We pass the (user)->when we click and using the navCtrl.push(Page, parameter) we pass the object to the UserDetailsPage as a parameter. Here we pass an OBJECT-user
+  showDetails(user){
+    this.navCtrl.push(UserDetailPage, {currentUser: user});
+  }
 
 }

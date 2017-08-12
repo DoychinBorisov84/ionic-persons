@@ -1,0 +1,28 @@
+<ion-header>
+
+  <ion-navbar hideBackButton>
+    <ion-title>Person Details</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="closeModal()"><ion-icon name="close" class="page-dismiss"></ion-icon></button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  <ion-list>
+    <ion-item>
+      <h1> {{ name }}</h1>
+      <h2> {{ title }}</h2>
+      <h3> {{ age }}</h3>
+      <h3> {{ location }}</h3>
+    </ion-item>
+  </ion-list>
+
+<!-- AIzaSyCdkmlpXmpWQRnm3b14_L3ju7MSf_8J7mI -->
+<button ion-button (click)="addMarker()" class="marker-button"><ion-icon name="add"></ion-icon>Add Marker</button>
+ <div #map id="map"></div>
+
+</ion-content>

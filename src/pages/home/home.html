@@ -13,13 +13,12 @@
 </ion-header>
 
 <ion-content padding>
-<!-- View for List/Reorder option/Button Without arrow/Looping through our Providers(EmployeeProvidersPage)/On click trigger a func(currentEmployeeClicked) in home.ts -->
   <ion-list no-lines>
-    <ion-item-group reorder="true" (ionItemReorder)="$event.applyTo(employees.employees_array)">
-      <button ion-item detail-none *ngFor="let single_employee of employees.employees_array" (click)="showDetails(single_employee)" class="button-details" >
+    <ion-item-group reorder="true" (ionItemReorder)="$event.applyTo(newUsers)">
+      <button ion-item detail-none *ngFor="let user of newUsers" (click)="showDetails(user)" class="button-details">
         <ion-avatar item-start><img src="../../assets/boy.png" alt="avatar-image"> </ion-avatar>
-        <h2>{{ single_employee.name }}</h2>
-        <h4>{{ single_employee.title }}</h4>
+          <h2>{{ user.name }}</h2>
+          <h4>{{ user.title }}</h4>
       </button>
     </ion-item-group>
   </ion-list>

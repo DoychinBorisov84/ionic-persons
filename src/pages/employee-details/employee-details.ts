@@ -26,7 +26,7 @@ export class EmployeeDetailsPage {
   constructor(public navCtrl: NavController, public navParams: NavParams, public viewCtrl: ViewController, public employees: EmployeesProvider, public geolocation: Geolocation) {
 
   // assigning this.object to take the current.param we take from the click in home page list
-  this.object =  this.navParams.get('employee');
+  this.object =  this.navParams.get('user');
 
   }
 

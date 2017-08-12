@@ -14,6 +14,7 @@ import { EmployeesProvider } from '../providers/employees/employees';
 import { Geolocation } from '@ionic-native/geolocation';
 import { IonicStorageModule } from '@ionic/storage';
 import { AddUserPage } from '../pages/add-user/add-user';
+import { UserDetailPage } from '../pages/user-detail/user-detail';
 
 
 const cloudSettings: CloudSettings = {
@@ -27,7 +28,8 @@ const cloudSettings: CloudSettings = {
     MyApp,
     HomePage,
     EmployeeDetailsPage,
-    AddUserPage
+    AddUserPage,
+    UserDetailPage
   ],
   imports: [
     BrowserModule,
@@ -41,7 +43,8 @@ const cloudSettings: CloudSettings = {
     MyApp,
     HomePage,
     EmployeeDetailsPage,
-    AddUserPage
+    AddUserPage,
+    UserDetailPage
   ],
   providers: [
     StatusBar,

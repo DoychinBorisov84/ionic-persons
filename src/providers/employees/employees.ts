@@ -1,20 +1,24 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
+import { Storage } from '@ionic/storage';
 
 @Injectable()
-export class EmployeesProvider {
-// Our HARDCODED-Data in the MODALl we take so we can use it in our pages, presented like an array of Objects
-employees_array = [
-  {name: 'Doychin', title: 'Web Developer', age: 33, location: 'Bulgaria'},
-  {name: 'Miguel', title: 'Footballer', age: 22, location: 'Spain'},
-  {name: 'Ronda', title: 'Fighter', age: 26, location: 'USA'},
-  {name: 'Jane', title: 'Writer', age: 44, location: 'Canada'},
-  {name: 'The Rock', title: 'Wrestler', age: '38', location: 'USA'}
-];
 
-  constructor(public http: Http) {
+export class EmployeesProvider {
+
+  constructor(public http: Http, public storage: Storage) {
     console.log('Hello EmployeesProvider Provider');
+  }
+
+  getData() {
+    return this.storage.get('employees');
+  }
+
+  saveData(data) {
+    let newData = JSON.stringify(data);
+    this.storage.set('employees', newData);
+
   }
 
 }
